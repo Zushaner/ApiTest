@@ -107,7 +107,7 @@ public class ApiEntityPositiveTest {
         };
     }
     //так как необходимо по одному тесту на метод, приоритетнее проверить данные параметры, чем Page и Per Page
-    @Test(description = "Тест api GETALL", dataProvider = "filtersForGetAllMethod", dependsOnMethods = {"getMethodPositiveTest"})
+    @Test(description = "Тест api GETALL", dataProvider = "filtersForGetAllMethod")
     @Severity(SeverityLevel.MINOR)
     public void getAllMethodPositiveTest(String attribute, String value) {
         String allEntitiesResponse = RestAssured.given().filter(new AllureRestAssured()).accept(ContentType.JSON)
