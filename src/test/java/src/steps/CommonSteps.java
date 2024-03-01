@@ -13,6 +13,7 @@ import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import src.models.AdditionalDataModel;
+import src.models.EndpointsPath;
 import src.models.EntitiesModel;
 import src.models.EntityModel;
 import org.testng.Assert;
@@ -33,7 +34,7 @@ public class CommonSteps {
         return Integer.parseInt(
                 RestAssured
                         .given().contentType(ContentType.JSON).body(gson.toJson(model))
-                        .when().post("/create")
+                        .when().post(EndpointsPath.POST_METHOD_PATH)
                         .then().statusCode(200).extract().asString()
         );
     }
@@ -41,7 +42,7 @@ public class CommonSteps {
     @Step("Получение сущности с id = {id}")
     public EntityModel getEntity(int id) {
         String response = RestAssured
-                .when().get(String.format("/get/%d", id))
+                .when().get(String.format(EndpointsPath.GET_METHOD_PATH, id))
                 .then().statusCode(200).extract().asString();
         Assert.assertNotNull(response, "В ответе нет данных");
         return gson.fromJson(response, EntityModel.class);
@@ -52,7 +53,7 @@ public class CommonSteps {
         RestAssured
                 .given().filter(new AllureRestAssured())
                 .when()
-                .when().get(String.format("/get/%d", id))
+                .when().get(String.format(EndpointsPath.GET_METHOD_PATH, id))
                 .then().statusCode(500);
     }
 

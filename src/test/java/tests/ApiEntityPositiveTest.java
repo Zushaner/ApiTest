@@ -6,7 +6,9 @@ import io.qameta.allure.SeverityLevel;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
+import org.apache.commons.lang3.RandomStringUtils;
 import src.models.AdditionalDataModel;
+import src.models.EndpointsPath;
 import src.models.EntitiesModel;
 import src.models.EntityModel;
 import org.testng.Assert;
@@ -15,6 +17,7 @@ import src.steps.CommonSteps;
 
 import java.lang.reflect.Field;
 import java.util.List;
+import java.util.Random;
 
 @Epic("Тестирование API Entities")
 public class ApiEntityPositiveTest {
@@ -25,11 +28,12 @@ public class ApiEntityPositiveTest {
     @BeforeSuite
     public void setup() {
         RestAssured.baseURI = "http://localhost:8080/api";
+        Random random = new Random();
         model = EntityModel.builder()
-                .title("title")
-                .verified(false)
-                .additionalData(AdditionalDataModel.builder().additionNumber(19).additionInfo("info").build())
-                .importantNumbers(List.of(1, 4, 0, 8))
+                .title(RandomStringUtils.randomAlphabetic(8))
+                .verified(random.nextBoolean())
+                .additionalData(AdditionalDataModel.builder().additionNumber(random.nextInt()).additionInfo(RandomStringUtils.randomAlphabetic(8)).build())
+                .importantNumbers(List.of((random.nextInt()), (random.nextInt()), (random.nextInt()), (random.nextInt())))
                 .build();
     }
 
@@ -41,7 +45,7 @@ public class ApiEntityPositiveTest {
 
         String response = RestAssured
                 .given().filter(new AllureRestAssured())
-                .when().get(String.format("/get/%d", id))
+                .when().get(String.format(EndpointsPath.GET_METHOD_PATH, id))
                 .then().statusCode(200).extract().asString();
 
         Assert.assertNotNull(response, "В ответе нет данных");
@@ -55,7 +59,7 @@ public class ApiEntityPositiveTest {
         String response = RestAssured
                 .given().filter(new AllureRestAssured())
                 .contentType(ContentType.JSON).body(commonSteps.toJson(model))
-                .when().post("/create")
+                .when().post(EndpointsPath.POST_METHOD_PATH)
                 .then().statusCode(200).extract().asString();
         Assert.assertNotNull(response, "В ответе нет данных");
 
@@ -73,7 +77,7 @@ public class ApiEntityPositiveTest {
 
         RestAssured
                 .given().filter(new AllureRestAssured())
-                .when().delete(String.format("/delete/%d", id))
+                .when().delete(String.format(EndpointsPath.DELETE_METHOD_PATH, id))
                 .then().statusCode(204);
 
         commonSteps.isEntityNotExist(id);
@@ -84,13 +88,13 @@ public class ApiEntityPositiveTest {
     public void patchMethodPositiveTest() {
         int id = commonSteps.createEntity(model);
         idForDelete.set(id);
-        EntityModel expectedModel = model.withVerified(true);
+        EntityModel expectedModel = model.withVerified(!model.getVerified());
 
         // отправляется вся модель, так как при попытке отправить в теле один параметр service прекращает работу
         RestAssured
                 .given().filter(new AllureRestAssured())
                 .contentType(ContentType.JSON).body(commonSteps.toJson(expectedModel))
-                .when().patch(String.format("/patch/%d", id))
+                .when().patch(String.format(EndpointsPath.PATCH_METHOD_PATH, id))
                 .then().statusCode(204);
 
         EntityModel entityModel = commonSteps.getEntity(id);
@@ -111,7 +115,7 @@ public class ApiEntityPositiveTest {
     @Severity(SeverityLevel.MINOR)
     public void getAllMethodPositiveTest(String attribute, String value) {
         String allEntitiesResponse = RestAssured.given().filter(new AllureRestAssured()).accept(ContentType.JSON)
-                .when().get("/getAll")
+                .when().get(EndpointsPath.GET_ALL_METHOD_PATH)
                 .then().statusCode(200).extract().asString();
         Assert.assertNotNull(allEntitiesResponse, "В ответе нет данных");
         EntitiesModel allEntities = (EntitiesModel) commonSteps.fromJson(allEntitiesResponse, EntitiesModel.class);
@@ -130,7 +134,7 @@ public class ApiEntityPositiveTest {
 
         String filteredResponse = RestAssured
                 .given().param(attribute, value).filter(new AllureRestAssured()).accept(ContentType.JSON)
-                .when().get("/getAll")
+                .when().get(EndpointsPath.GET_ALL_METHOD_PATH)
                 .then().statusCode(200).extract().asString();
         Assert.assertNotNull(filteredResponse, "В ответе нет данных");
 
@@ -141,7 +145,7 @@ public class ApiEntityPositiveTest {
     @AfterMethod
     public void after() {
         if (idForDelete.get() != null) {
-            RestAssured.delete(String.format("/delete/%d", idForDelete.get()));
+            RestAssured.delete(String.format(EndpointsPath.DELETE_METHOD_PATH, idForDelete.get()));
         }
     }
 }
