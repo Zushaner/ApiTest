@@ -1,0 +1,10 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<!--<suite name="Тестирование API Entities" parallel="methods" data-provider-thread-count="2" thread-count="2">-->
+<!-- при попытке параллельного запуска на все запросы начинает приходить код 500 -->
+<suite name="Тестирование API Entities" parallel="none" thread-count="2">
+    <test name="Тестирование API Entities">
+        <classes>
+            <class name="tests.ApiEntityPositiveTest"/>
+        </classes>
+    </test>
+</suite>

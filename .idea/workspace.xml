@@ -5,22 +5,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6d8ac224-b068-491e-9c98-1d228f0c6a22" name="Changes" comment="Базовый код">
-      <change afterPath="$PROJECT_DIR$/src/test/java/ApiTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/ApiTestVer2.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/Helpers/AdditionalDataDeserializer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/Helpers/AdditionalDataSerializer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/Helpers/EntityDeserializer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/Helpers/EntitySerializer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/Helpers/ObjectDeserializer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/Helpers/ObjectSerializer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/models/AdditionalData.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/models/EntityModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/models/ObjectModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/steps/CommonSteps.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/resources/allure.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/src/models/EntitiesModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/src/steps/CommonSteps.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/tests/ApiEntityPositiveTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/testng.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/ApiTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/ApiTestVer2.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/Helpers/AdditionalDataDeserializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/src/helpers/AdditionalDataDeserializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/Helpers/AdditionalDataSerializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/src/helpers/AdditionalDataSerializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/Helpers/EntityDeserializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/src/helpers/EntitiesDeserializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/Helpers/EntitySerializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/src/helpers/EntitiesSerializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/Helpers/ObjectDeserializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/src/helpers/EntityDeserializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/Helpers/ObjectSerializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/src/helpers/EntitySerializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/models/AdditionalData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/src/models/AdditionalDataModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/models/EntityModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/models/ObjectModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/src/models/EntityModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/steps/CommonSteps.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,6 +34,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="Enum" />
       </list>
     </option>
   </component>
@@ -52,7 +56,7 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "C:/Work/SimbirSoftApiTest",
+    "last_opened_file_path": "C:/Work/ApiTest",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0",
@@ -61,15 +65,18 @@
   }
 }]]></component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Work\ApiTest\src\test\resources" />
+    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="TestNG.ApiTestVer2">
-    <configuration name="ApiTest" type="TestNG" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="TestNG.C:/Work/ApiTest/src/test/resources/testng.xml">
+    <configuration name="ApiEntityPositiveTest" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="SimbirSoftTask1" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="ApiTest" />
+      <option name="MAIN_CLASS_NAME" value="tests.ApiEntityPositiveTest" />
       <option name="TEST_OBJECT" value="CLASS" />
       <properties />
       <listeners />
@@ -77,22 +84,11 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ApiTestVer2" type="TestNG" temporary="true" nameIsGenerated="true">
+    <configuration name="ApiEntityPositiveTest.getAllMethodPositiveTest" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="SimbirSoftTask1" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="ApiTestVer2" />
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ApiTestVer2.getAllTest" type="TestNG" temporary="true" nameIsGenerated="true">
-      <module name="SimbirSoftTask1" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="ApiTestVer2" />
-      <option name="METHOD_NAME" value="getAllTest" />
+      <option name="MAIN_CLASS_NAME" value="tests.ApiEntityPositiveTest" />
+      <option name="METHOD_NAME" value="getAllMethodPositiveTest" />
       <option name="TEST_OBJECT" value="METHOD" />
       <properties />
       <listeners />
@@ -100,10 +96,10 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ApiTestVer2.patchTest" type="TestNG" temporary="true" nameIsGenerated="true">
+    <configuration name="ApiEntityPositiveTest.patchTest" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="SimbirSoftTask1" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="ApiTestVer2" />
+      <option name="MAIN_CLASS_NAME" value="tests.ApiEntityPositiveTest" />
       <option name="METHOD_NAME" value="patchTest" />
       <option name="TEST_OBJECT" value="METHOD" />
       <properties />
@@ -112,12 +108,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ApiTestVer2.postTest" type="TestNG" temporary="true" nameIsGenerated="true">
+    <configuration name="ApiEntityPositiveTest.postMethodPositiveTest" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="SimbirSoftTask1" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="ApiTestVer2" />
-      <option name="METHOD_NAME" value="postTest" />
+      <option name="MAIN_CLASS_NAME" value="tests.ApiEntityPositiveTest" />
+      <option name="METHOD_NAME" value="postMethodPositiveTest" />
       <option name="TEST_OBJECT" value="METHOD" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="C:/Work/ApiTest/src/test/resources/testng.xml" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="SimbirSoftTask1" />
+      <option name="SUITE_NAME" value="$PROJECT_DIR$/src/test/resources/testng.xml" />
+      <option name="TEST_OBJECT" value="SUITE" />
       <properties />
       <listeners />
       <method v="2">
@@ -126,11 +132,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="TestNG.ApiTestVer2" />
-        <item itemvalue="TestNG.ApiTest" />
-        <item itemvalue="TestNG.ApiTestVer2.getAllTest" />
-        <item itemvalue="TestNG.ApiTestVer2.patchTest" />
-        <item itemvalue="TestNG.ApiTestVer2.postTest" />
+        <item itemvalue="TestNG.C:/Work/ApiTest/src/test/resources/testng.xml" />
+        <item itemvalue="TestNG.ApiEntityPositiveTest.getAllMethodPositiveTest" />
+        <item itemvalue="TestNG.ApiEntityPositiveTest.postMethodPositiveTest" />
+        <item itemvalue="TestNG.ApiEntityPositiveTest" />
+        <item itemvalue="TestNG.ApiEntityPositiveTest.patchTest" />
       </list>
     </recent_temporary>
   </component>
@@ -150,7 +156,14 @@
       <option name="project" value="LOCAL" />
       <updated>1709021940217</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Базовый код">
+      <created>1709187290589</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1709187290590</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
