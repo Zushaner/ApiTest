@@ -22,7 +22,8 @@ public class EntityModel {
     private List<Integer> importantNumbers;
     private String title;
     private AdditionalDataModel additionalData;
-    @With private Boolean verified;
+    @With
+    private Boolean verified;
 
     @Override
     public boolean equals(Object o) {

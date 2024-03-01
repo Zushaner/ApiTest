@@ -16,11 +16,8 @@ import java.util.Objects;
 @NoArgsConstructor
 @Setter
 public class AdditionalDataModel {
-
     private String additionInfo;
-
     private Integer additionNumber;
-
     private Integer additionId;
 
     @Override

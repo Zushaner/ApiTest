@@ -1,22 +1,22 @@
 package src.steps;
 
-import src.helpers.AdditionalDataDeserializer;
-import src.helpers.AdditionalDataSerializer;
-import src.helpers.EntitiesDeserializer;
-import src.helpers.EntitiesSerializer;
-import src.helpers.EntityDeserializer;
-import src.helpers.EntitySerializer;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import io.qameta.allure.Step;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
+import org.testng.Assert;
+import src.helpers.AdditionalDataDeserializer;
+import src.helpers.AdditionalDataSerializer;
+import src.helpers.EntitiesDeserializer;
+import src.helpers.EntitiesSerializer;
+import src.helpers.EntityDeserializer;
+import src.helpers.EntitySerializer;
 import src.models.AdditionalDataModel;
 import src.models.EndpointsPath;
 import src.models.EntitiesModel;
 import src.models.EntityModel;
-import org.testng.Assert;
 
 public class CommonSteps {
     private final static Gson gson = new GsonBuilder()

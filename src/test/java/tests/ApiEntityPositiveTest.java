@@ -7,12 +7,16 @@ import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import org.apache.commons.lang3.RandomStringUtils;
+import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
 import src.models.AdditionalDataModel;
 import src.models.EndpointsPath;
 import src.models.EntitiesModel;
 import src.models.EntityModel;
-import org.testng.Assert;
-import org.testng.annotations.*;
 import src.steps.CommonSteps;
 
 import java.lang.reflect.Field;
@@ -26,14 +30,22 @@ public class ApiEntityPositiveTest {
     private final CommonSteps commonSteps = new CommonSteps();
 
     @BeforeSuite
-    public void setup() {
+    public void beforeSuite() {
         RestAssured.baseURI = "http://localhost:8080/api";
+    }
+
+    @BeforeMethod
+    public void beforeEach() {
         Random random = new Random();
         model = EntityModel.builder()
                 .title(RandomStringUtils.randomAlphabetic(8))
                 .verified(random.nextBoolean())
-                .additionalData(AdditionalDataModel.builder().additionNumber(random.nextInt()).additionInfo(RandomStringUtils.randomAlphabetic(8)).build())
-                .importantNumbers(List.of((random.nextInt()), (random.nextInt()), (random.nextInt()), (random.nextInt())))
+                .additionalData(
+                        AdditionalDataModel.builder()
+                                .additionNumber(random.nextInt())
+                                .additionInfo(RandomStringUtils.randomAlphabetic(8))
+                                .build())
+                .importantNumbers(List.of(random.nextInt(), random.nextInt(), random.nextInt(), random.nextInt()))
                 .build();
     }
 
@@ -53,7 +65,7 @@ public class ApiEntityPositiveTest {
         Assert.assertEquals(entityModel, model, "Сущности должны быть эквивалентными");
     }
 
-    @Test(description = "Тест api POST", dependsOnMethods = {"getMethodPositiveTest"})
+    @Test(description = "Тест api POST")
     @Severity(SeverityLevel.BLOCKER)
     public void postMethodPositiveTest() {
         String response = RestAssured
@@ -69,7 +81,7 @@ public class ApiEntityPositiveTest {
         Assert.assertEquals(entityModel, model, "Сущности должны быть эквивалентными");
     }
 
-    @Test(description = "Тест api DELETE", dependsOnMethods = {"postMethodPositiveTest", "getMethodPositiveTest"})
+    @Test(description = "Тест api DELETE")
     @Severity(SeverityLevel.NORMAL)
     public void deleteMethodPositiveTest() {
         int id = commonSteps.createEntity(model);
@@ -83,7 +95,7 @@ public class ApiEntityPositiveTest {
         commonSteps.isEntityNotExist(id);
     }
 
-    @Test(description = "Тест api PATCH", dependsOnMethods = {"postMethodPositiveTest", "getMethodPositiveTest"})
+    @Test(description = "Тест api PATCH")
     @Severity(SeverityLevel.NORMAL)
     public void patchMethodPositiveTest() {
         int id = commonSteps.createEntity(model);
@@ -101,15 +113,16 @@ public class ApiEntityPositiveTest {
         Assert.assertEquals(entityModel, expectedModel, "Сущности должны быть эквивалентными");
     }
 
-//    @DataProvider(parallel = true)
-// при попытке параллельного запуска на все запросы начинает приходить код 500
+    // @DataProvider(parallel = true)
+    // при попытке параллельного запуска на все запросы начинает приходить код 500
     @DataProvider
     public Object[][] filtersForGetAllMethod() {
-        return new Object[][] {
-                new Object[] {"verified", "true"},
-                new Object[] {"title", "title"}
+        return new Object[][]{
+                new Object[]{"verified", "true"},
+                new Object[]{"title", "title"}
         };
     }
+
     //так как необходимо по одному тесту на метод, приоритетнее проверить данные параметры, чем Page и Per Page
     @Test(description = "Тест api GETALL", dataProvider = "filtersForGetAllMethod")
     @Severity(SeverityLevel.MINOR)

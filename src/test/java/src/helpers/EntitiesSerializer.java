@@ -15,7 +15,7 @@ public class EntitiesSerializer implements JsonSerializer<EntitiesModel> {
     public JsonElement serialize(EntitiesModel entitiesModel, Type type, JsonSerializationContext jsonSerializationContext) {
         JsonObject element = new JsonObject();
         JsonArray jsonElements = new JsonArray();
-        for(EntityModel model : entitiesModel.getEntities()){
+        for (EntityModel model : entitiesModel.getEntities()) {
             jsonElements.add(jsonSerializationContext.serialize(model));
         }
         element.add("entity", jsonElements);

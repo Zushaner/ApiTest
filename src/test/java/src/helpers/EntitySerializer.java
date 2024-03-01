@@ -15,7 +15,9 @@ public class EntitySerializer implements JsonSerializer<EntityModel> {
     public JsonElement serialize(EntityModel entityModel, Type type, JsonSerializationContext jsonSerializationContext) {
         JsonObject json = new JsonObject();
         JsonArray array = new JsonArray();
-        for(Integer i : entityModel.getImportantNumbers()) { array.add(i);}
+        for (Integer i : entityModel.getImportantNumbers()) {
+            array.add(i);
+        }
         json.add("addition", jsonSerializationContext.serialize(entityModel.getAdditionalData()));
         json.add("important_numbers", array);
         json.addProperty("title", entityModel.getTitle());
